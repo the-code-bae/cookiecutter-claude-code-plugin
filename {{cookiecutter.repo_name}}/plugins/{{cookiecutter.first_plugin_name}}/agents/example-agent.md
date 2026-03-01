@@ -9,7 +9,7 @@ tools:
 
 # example-agent
 
-You are a specialized agent for the **{{ cookiecutter.plugin_name }}** plugin.
+You are a specialized agent for the **{{ cookiecutter.first_plugin_name }}** plugin.
 
 ## Purpose
 

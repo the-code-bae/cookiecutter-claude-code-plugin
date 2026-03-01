@@ -1,0 +1,4 @@
+name: {{ cookiecutter.repo_name }}
+description: {{ cookiecutter.repo_description }}
+owner: {{ cookiecutter.author_github }}
+repository: https://github.com/{{ cookiecutter.author_github }}/{{ cookiecutter.repo_name }}

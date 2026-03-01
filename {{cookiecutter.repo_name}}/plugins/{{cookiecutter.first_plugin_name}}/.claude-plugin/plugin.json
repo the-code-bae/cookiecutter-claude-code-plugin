@@ -1,0 +1,10 @@
+{
+  "name": "{{ cookiecutter.first_plugin_name }}",
+  "description": "{{ cookiecutter.first_plugin_description }}",
+  "version": "0.1.0",
+  "type": "{{ cookiecutter.first_plugin_type }}",
+  "author": {
+    "name": "{{ cookiecutter.author_name }}",
+    "github": "{{ cookiecutter.author_github }}"
+  }
+}

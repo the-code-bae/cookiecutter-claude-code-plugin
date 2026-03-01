@@ -9,38 +9,50 @@ include_hooks = "{{ cookiecutter.include_hooks }}" == "yes"
 include_mcp_config = "{{ cookiecutter.include_mcp_config }}" == "yes"
 include_example_skill = "{{ cookiecutter.include_example_skill }}" == "yes"
 include_example_agent = "{{ cookiecutter.include_example_agent }}" == "yes"
+first_plugin = "{{ cookiecutter.first_plugin_name }}"
+second_plugin = "{{ cookiecutter.second_plugin_name }}"
 
-# Remove hooks directory if not wanted
-if not include_hooks:
-    shutil.rmtree("hooks", ignore_errors=True)
+plugin_dirs = [
+    os.path.join("plugins", first_plugin),
+    os.path.join("plugins", second_plugin),
+]
 
-# Remove .mcp.json if not wanted
-if not include_mcp_config:
-    try:
-        os.remove(".mcp.json")
-    except OSError:
-        pass
+for plugin_dir in plugin_dirs:
+    # Remove hooks directory if not wanted
+    if not include_hooks:
+        shutil.rmtree(os.path.join(plugin_dir, "hooks"), ignore_errors=True)
 
-# Remove example skill if not wanted
-if not include_example_skill:
-    shutil.rmtree(os.path.join("skills", "hello"), ignore_errors=True)
-    # Restore .gitkeep if skills dir is now empty
-    if not os.listdir("skills"):
-        open(os.path.join("skills", ".gitkeep"), "w").close()
+    # Remove .mcp.json if not wanted
+    if not include_mcp_config:
+        try:
+            os.remove(os.path.join(plugin_dir, ".mcp.json"))
+        except OSError:
+            pass
 
-# Remove example agent if not wanted
-if not include_example_agent:
-    try:
-        os.remove(os.path.join("agents", "example-agent.md"))
-    except OSError:
-        pass
-    # Restore .gitkeep if agents dir is now empty
-    if not os.listdir("agents"):
-        open(os.path.join("agents", ".gitkeep"), "w").close()
+    # Remove example skill if not wanted
+    if not include_example_skill:
+        shutil.rmtree(os.path.join(plugin_dir, "skills", "hello"), ignore_errors=True)
+        shutil.rmtree(os.path.join(plugin_dir, "skills", "greet"), ignore_errors=True)
+        skills_dir = os.path.join(plugin_dir, "skills")
+        if os.path.isdir(skills_dir) and not os.listdir(skills_dir):
+            open(os.path.join(skills_dir, ".gitkeep"), "w").close()
 
-print(f"\nPlugin '{{ cookiecutter.plugin_name }}' created successfully!")
-print("Next steps:")
-print("  1. cd {{ cookiecutter.plugin_name }}")
-print("  2. Edit .claude-plugin/plugin.json with your plugin metadata")
-print("  3. Add skills in skills/, commands in commands/, agents in agents/")
-print("  4. Run 'claude' to test your plugin")
+    # Remove example agent if not wanted
+    if not include_example_agent:
+        try:
+            os.remove(os.path.join(plugin_dir, "agents", "example-agent.md"))
+        except OSError:
+            pass
+        agents_dir = os.path.join(plugin_dir, "agents")
+        if os.path.isdir(agents_dir) and not os.listdir(agents_dir):
+            open(os.path.join(agents_dir, ".gitkeep"), "w").close()
+
+print(f"\nRepository '{{ cookiecutter.repo_name }}' created successfully!")
+print(f"Plugins created:")
+print(f"  - plugins/{first_plugin}/")
+print(f"  - plugins/{second_plugin}/")
+print("\nNext steps:")
+print(f"  1. cd {{ cookiecutter.repo_name }}")
+print(f"  2. git init && git add -A && git commit -m 'Initial commit'")
+print(f"  3. Add more plugins by creating new directories under plugins/")
+print(f"  4. Register new plugins in .claude-plugin/marketplace.json")

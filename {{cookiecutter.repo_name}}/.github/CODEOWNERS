@@ -1,0 +1,6 @@
+# Default owners for the entire repo
+* @{{ cookiecutter.author_github }}
+
+# Plugin-specific ownership
+# plugins/{{ cookiecutter.first_plugin_name }}/ @{{ cookiecutter.author_github }}
+# plugins/{{ cookiecutter.second_plugin_name }}/ @{{ cookiecutter.author_github }}
