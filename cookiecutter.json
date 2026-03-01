@@ -1,0 +1,13 @@
+{
+  "plugin_name": "my-plugin",
+  "plugin_description": "A Claude Code plugin",
+  "plugin_version": "0.1.0",
+  "author_name": "Your Name",
+  "author_github": "your-github-username",
+  "plugin_type": ["domain", "core", "experimental"],
+  "include_hooks": "yes",
+  "include_mcp_config": "yes",
+  "include_example_skill": "yes",
+  "include_example_agent": "yes",
+  "license": ["MIT", "Apache-2.0", "BSD-3-Clause", "none"]
+}
