@@ -2,9 +2,7 @@
   "name": "{{ cookiecutter.second_plugin_name }}",
   "description": "{{ cookiecutter.second_plugin_description }}",
   "version": "0.1.0",
-  "type": "{{ cookiecutter.second_plugin_type }}",
   "author": {
-    "name": "{{ cookiecutter.author_name }}",
-    "github": "{{ cookiecutter.author_github }}"
+    "name": "{{ cookiecutter.author_name }}"
   }
 }

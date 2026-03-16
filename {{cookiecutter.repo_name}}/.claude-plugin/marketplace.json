@@ -2,21 +2,18 @@
   "name": "{{ cookiecutter.repo_name }}",
   "description": "{{ cookiecutter.repo_description }}",
   "author": {
-    "name": "{{ cookiecutter.author_name }}",
-    "github": "{{ cookiecutter.author_github }}"
+    "name": "{{ cookiecutter.author_name }}"
   },
   "plugins": [
     {
       "name": "{{ cookiecutter.first_plugin_name }}",
-      "path": "plugins/{{ cookiecutter.first_plugin_name }}",
-      "description": "{{ cookiecutter.first_plugin_description }}",
-      "type": "{{ cookiecutter.first_plugin_type }}"
+      "source": "./plugins/{{ cookiecutter.first_plugin_name }}",
+      "description": "{{ cookiecutter.first_plugin_description }}"
     },
     {
       "name": "{{ cookiecutter.second_plugin_name }}",
-      "path": "plugins/{{ cookiecutter.second_plugin_name }}",
-      "description": "{{ cookiecutter.second_plugin_description }}",
-      "type": "{{ cookiecutter.second_plugin_type }}"
+      "source": "./plugins/{{ cookiecutter.second_plugin_name }}",
+      "description": "{{ cookiecutter.second_plugin_description }}"
     }
   ]
 }
